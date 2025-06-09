@@ -1,0 +1,308 @@
+---
+title: "Introduction to R Programming"
+author: "Nhan Nguyen"
+Data: "06/04/2025"
+format:
+  revealjs: default
+  pdf: default
+---
+
+```{r}
+
+```
+
+## **Slide 1: Welcome and Overview**
+
+-   **Goals for Today:**
+
+    -   Install R, RStudio, and Quarto
+
+    -   Understand the RStudio interface
+
+    -   Understand the Quarto
+
+    -   Create projects and set working directories
+
+    -   Read External Data Files
+
+    -   Install and load packages
+
+    -   Data Structures in R
+
+    -   Run basic R commands
+
+------------------------------------------------------------------------
+
+## **Slide 2: Installing R and RStudio**
+
+-   **Install R:**
+
+    -   Visit: <https://cran.r-project.org>
+
+    -   Choose the version for your operating system (Windows, macOS, Linux)
+
+    -   Follow the installation instructions
+
+-   **Install RStudio:**
+
+    -   Visit: <https://posit.co/download/rstudio-desktop/>
+
+    -   Download the free RStudio Desktop version
+
+    -   Install it after installing R
+
+------------------------------------------------------------------------
+
+## **Slide 3: RStudio Interface**
+
+-   **Main Panels:**
+
+    -   **Source/Script Editor** (top-left): Write and edit code
+
+    -   **Console** (bottom-left): Run commands directly
+
+    -   **Environment/History** (top-right): Track variables and command history
+
+    -   **Files/Plots/Packages/Help/Viewer** (bottom-right): Navigate files, view plots, manage packages, access help
+
+------------------------------------------------------------------------
+
+## Slide 4: Introduction to Quarto
+
+-   **What is Quarto?**
+
+    -   A next-generation version of R Markdown by RStudio
+
+    -   Developed to be multilingual, starting with R, Python, JavaScript, and Julia
+
+    -   Supports HTML, PDF, Word, slides, books, blogs, dashboards
+
+-   **Why Use Quarto?**
+
+    -   Unified tool for coding, documentation, and presentation
+
+    -   Integrates with R, Python, Julia
+
+    -   Easy reproducibility and formatting
+
+------------------------------------------------------------------------
+
+## Slide 5: Setting Up Quarto
+
+-   **Install Quarto:**
+
+    -   Visit: <https://quarto.org>
+
+    -   Download and install for your OS
+
+-   **Use in RStudio:**
+
+    -   Requires latest version of RStudio (2022.07 or newer)
+
+    -   Create new file: `File > New File > Quarto Document or Presentation`
+
+------------------------------------------------------------------------
+
+## Slide 6: Basic Structure of a Quarto File
+
+-   Begins with a YAML header:
+
+```         
+---
+title: "My First Quarto Doc"
+author: "Nhan Nguyen"
+format: html
+---
+```
+
+-   Markdown text, code chunks (```` ```{r } ````), and output all in one document
+
+-   Use `Render` button to compile to HTML or PDF
+
+------------------------------------------------------------------------
+
+## Slide 7: Using Quarto Effectively
+
+-   **Use Sections:** Start each new slide or section with `##`
+
+-   **Chunk Code Wisely:** Show clean, runnable code using ```` ```{r} ... ``` ````
+
+-   **Shortcuts:** Mac (insert assignment operator "Option+-"); Windows/Linix ("Alt+-")
+
+-   **Collaborate:** Git + Quarto for version control and reproducibility
+
+    ------------------------------------------------------------------------
+
+## **Slide 8: Creating Projects and Working Directories**
+
+-   **Why Projects?**
+
+    -   Keeps your scripts, data, and outputs organized
+
+-   **Creating a New Project:**
+
+    -   \(1\) Go to **File \> New Project** in RStudio; (2) Choose **New Directory** or **Existing Directory;** (3)Set a project name and path
+
+-   **Set Working Directory:**
+
+    -   Use `setwd("your/path")` to manually set it
+
+------------------------------------------------------------------------
+
+## **Slide 8: Creating Projects and Working Directories** (continued)
+
+**Set Working Directory (Mac):**
+
+-   Use code
+
+    ```         
+    setwd("~/R_Working Data")
+    setwd("~/R_Working Data/Dr_Lee/R_File for Code")
+    ```
+
+-   Option 2: Use RStudio menu: `Session > Set Working Directory > Choose Directory...`
+
+------------------------------------------------------------------------
+
+## **Slide 8: Creating Projects and Working Directories** (continued)
+
+**Set Working Directory (Windows):**
+
+-   Option 1: Use code
+
+    ```         
+    setwd("C:\\Users\\NHAN DUC NGUYEN\\Desktop\\WHOLE\\APSNU_PAC_BI\\DATA")
+    ```
+
+-   Option 2: Use RStudio menu: `Session > Set Working Directory > Choose Directory...`
+
+------------------------------------------------------------------------
+
+## **Slide 9:** Reading External Data Files
+
+**Excel Files:**
+
+-   Use the `readxl` package:\
+    `library(readxl)`\
+    `data <- read_excel("gss2016_n.xls")`
+
+**SPSS Files:**
+
+-   Use the `haven` package:\
+    `library(haven)`\
+    `data <- read_sav("CHAPS_WORK.sav")`
+
+------------------------------------------------------------------------
+
+## **Slide 9:** Reading External Data Files (continued)
+
+**STATA Files:**
+
+-   `data <- read_dta("10.sample_long.dta")`
+
+**CSV Files:**
+
+-   Base R: data \<- read.csv("baby_names_national.csv")
+
+-   `readr` package: data \<- read_csv("baby_names_national.csv")
+
+------------------------------------------------------------------------
+
+## **Slide 9:** Reading External Data Files (continued)
+
+**RDS Files (R-specific binary format):**
+
+-   Read an RDS file:
+
+    ```         
+    data <- readRDS("hrs_2020_final.rds"")
+    ```
+
+<!-- -->
+
+-   Save an R object:
+
+    ```         
+    saveRDS(data, file = "mydata.rds")
+    ```
+
+------------------------------------------------------------------------
+
+## **Slide 10: Installing and Loading Packages**
+
+-   **Installing a Package:**
+
+    -   Example: install.packages("ggplot2")
+
+-   **Loading a Package:**
+
+    -   Example: library(ggplot2)
+
+-   **Loading a Package:**
+
+    -   Example: library(ggplot2)
+
+-   **Useful Packages:**
+
+    -   Example: "ggplot2", "dplyr", "tidyr"
+
+------------------------------------------------------------------------
+
+## **Slide 11: Data Structures in R**
+
+-   **Vector:** A sequence of elements of the same type
+
+    -   Example: `x <- c(1, 2, 3); class(x); is.vector(x)`
+    -   x \<- c(1,2,3)
+
+-   **Matrix:** 2D array with same data type
+
+    -   Example: mat ``` <-``matrix(1:6, nrow=2, ncol=3) ```
+
+------------------------------------------------------------------------
+
+## **Slide 11: Data Structures in R** (continued)
+
+-   **Data Frame:** Table with columns of different types
+
+    -   Example: `df <- data.frame(ID = 1:3, States = c("California", "Texas", "WA D.C"))`
+
+-   **List:** Collection of elements of different types
+
+    -   Example: `lis <-list(a = 1, b = "hello")`
+
+------------------------------------------------------------------------
+
+## **Slide 12: Basic R Commands**
+
+-   **Assignment:** `x <- 10`
+
+-   **Math operations:** `y <- x + 5`
+
+-   **Basic Functions:** a`<- c(10, 20, 13, 4, 5, 8, 10, 11)`
+
+    -   `sum(a)`, `mean(a)`, `sd(a)`
+
+-   **Linear Regression:** `model <- lm(y ~ x)`
+
+-   **Printing Output:** `print(x)`
+
+------------------------------------------------------------------------
+
+## **Summary and Q&A**
+
+-   Today you learned how to:
+
+    -   Install and navigate R, RStudio, and Quarto
+
+    -   Organize your work with projects and working directories
+
+    -   Reading External Data Files
+
+    -   Installing and Loading Packages
+
+    -   Understand R data structures
+
+    -   Use packages and write basic commands
+
+    -   **Questions?**
